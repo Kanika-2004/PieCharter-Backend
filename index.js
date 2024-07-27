@@ -1,6 +1,6 @@
 const express=require('express')
 const { PORT } = require('./config/serverConfig.js')
-const connectDb = require('./config/dbconfig.js')
+const connectDb = require('./config/dbConfig.js')
 const userRouter=require('./routes/userRoutes.js')
 const serverconfig = require('./config/serverConfig.js')
 const cookieParser=require('cookie-parser')
