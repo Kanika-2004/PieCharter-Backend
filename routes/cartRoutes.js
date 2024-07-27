@@ -1,6 +1,6 @@
 const express=require('express')
-const {getcarbyuser,clearcartbyuser,modifycartbyuser} = require('../controllers/cartcontroller')
-const isLoggedIn = require('../validation/authvalidator')
+const {getcarbyuser,clearcartbyuser,modifycartbyuser} = require('../controllers/cartController')
+const isLoggedIn = require('../validation/authValidator')
 const cartRoute= express.Router()
 cartRoute.get('/',isLoggedIn,getcarbyuser)
 cartRoute.post('/:operation/:productid',isLoggedIn,modifycartbyuser)

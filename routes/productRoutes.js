@@ -1,6 +1,6 @@
 const express=require('express')
 const uploader=require('../middlewares/multerMiddleware')
-const {isloogedin} = require('../validation/authvalidator')
+const {isloogedin} = require('../validation/authValidator')
 const {createProduct,findproducts,findproductbyId,deleteProduct}=require('../controllers/productController')
 const productRouter=express.Router()
 productRouter.post('/',uploader.single('productImage'),createProduct)

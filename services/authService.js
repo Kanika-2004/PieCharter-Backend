@@ -1,7 +1,7 @@
 const {find}=require('../repositories/userRepository')
 const jwt=require('jsonwebtoken')
 const bcrypt=require('bcrypt')
-const { JWT_SECRET, JWT_EXPIRY } = require('../config/serverconfig')
+const { JWT_SECRET, JWT_EXPIRY } = require('../config/serverConfig')
 async function login(userdetails){
     const email=userdetails.email
     const plainpassword=userdetails.password
