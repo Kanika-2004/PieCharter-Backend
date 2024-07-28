@@ -1,4 +1,20 @@
 const login=require('../services/authService')
+
+async function logout(req,res){
+    res.cookie("authToken","",{
+        httpOnly:true,
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+    })
+     return res.status(200).json({
+        success: true,
+        message: "Log out successfull",
+        error: {},
+        data: {}
+    });
+}
+
+
 async function loginUser(req,res){
     try{
         const response=await login(req.body)
@@ -22,4 +38,7 @@ async function loginUser(req,res){
     }
 
 }
-module.exports=loginUser
+module.exports={
+    loginUser,
+    logout
+}
