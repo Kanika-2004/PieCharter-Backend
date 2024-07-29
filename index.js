@@ -12,7 +12,16 @@ const cartRoute = require('./routes/cartRoutes.js')
 const orderRoute = require('./routes/orderRoutes.js')
 const cors=require('cors')
 const app= express()
-app.use(cors())
+
+const corsOptions = {
+    origin: 'http://localhost:5173', // Specify your client's origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    credentials: true, // Enable credentials
+  };
+  
+  app.use(cors(corsOptions));
+
+
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
