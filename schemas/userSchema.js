@@ -3,7 +3,6 @@ const bcrypt=require('bcrypt')
 const Userschema= new mongoose.Schema({
     firstName:{
         type:String,
-        required:[true," Name is a required field "],
         minlength:[5,"Name should be minimum of 5 character long"],
         lowercase:true,
         trim:true,
@@ -11,7 +10,6 @@ const Userschema= new mongoose.Schema({
     },
     lastName:{
         type:String,
-        required:[true," LastName is a required field "],
         minlength:[5,"LastName should be minimum of 5 character long"],
         lowercase:true,
         trim:true,
