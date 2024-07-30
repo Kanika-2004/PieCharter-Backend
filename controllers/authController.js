@@ -24,7 +24,9 @@ async function loginUser(req,res){
             maxAge:7*24*60*60*1000
         });
         return res.status(201).json({
-            data:response.userData,
+            data:{
+                userData:response.userData
+            },
             success:true,
             error:{},
             message:"successfully logged in the user"
