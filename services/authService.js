@@ -19,6 +19,11 @@ async function login(userdetails){
         expiresIn:JWT_EXPIRY
     })
     console.log(token)
-    return token;
+    return {token,
+        userData:{
+            email:user.email,
+            firstName:user.firstName,
+        }
+    };
 }
 module.exports=login

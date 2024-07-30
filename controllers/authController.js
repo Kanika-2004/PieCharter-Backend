@@ -18,13 +18,13 @@ async function logout(req,res){
 async function loginUser(req,res){
     try{
         const response=await login(req.body)
-        res.cookie("authToken",response,{
+        res.cookie("authToken",response.token,{
             httpOnly:true,
             secure:false,
             maxAge:7*24*60*60*1000
         });
         return res.status(201).json({
-            data:response,
+            data:response.userData,
             success:true,
             error:{},
             message:"successfully logged in the user"
