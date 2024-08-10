@@ -1,5 +1,6 @@
 const jwt=require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/serverConfig')
+const serverConfig = require('../config/serverConfig')
 async function isLoggedIn(req,res,next){
     console.log("inside isloggedin",req.cookies)
     const token=req.cookies["authToken"]
@@ -32,7 +33,9 @@ async function isLoggedIn(req,res,next){
             res.cookie("authToken","",{
                 httpOnly:true,
                 sameSite: "lax",
+                secure:serverConfig.COOKIE_SECURE,
                 maxAge: 7 * 24 * 60 * 60 * 1000,
+                domain:serverConfig.FRONTEND_URL
             })
              return res.status(200).json({
                 success: true,

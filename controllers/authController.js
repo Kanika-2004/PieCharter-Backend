@@ -1,10 +1,13 @@
+const serverConfig = require('../config/serverConfig');
 const login=require('../services/authService')
 
 async function logout(req,res){
     res.cookie("authToken","",{
         httpOnly:true,
         sameSite: "lax",
+        secure: serverConfig.COOKIE_SECURE,
         maxAge: 7 * 24 * 60 * 60 * 1000,
+        domain:serverConfig.FRONTEND_URL
     })
      return res.status(200).json({
         success: true,
@@ -20,7 +23,8 @@ async function loginUser(req,res){
         const response=await login(req.body)
         res.cookie("authToken",response.token,{
             httpOnly:true,
-            secure:false,
+            secure:serverConfig.COOKIE_SECURE,
+            domain:serverConfig.FRONTEND_URL,
             maxAge:7*24*60*60*1000
         });
         return res.status(201).json({
