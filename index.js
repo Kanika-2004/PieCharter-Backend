@@ -40,12 +40,12 @@ app.use(cors(corsOptions));
 
 
 app.use(session({
-  secret: serverconfig.JWT_SECRET,
-  resave: false, // Don't save session if unmodified
-  saveUninitialized: false, // Don't create session until something stored
+  // secret: serverconfig.JWT_SECRET,
+  // resave: false, // Don't save session if unmodified
+  // saveUninitialized: false, // Don't create session until something stored
   store: MongoStore.create({
       mongoUrl: serverconfig.DB_URL, // Your MongoDB connection string
-      collectionName: 'sessions' // Optional collection name (default is 'sessions')
+      // collectionName: 'sessions' // Optional collection name (default is 'sessions')
   }),
   // cookie: {
   //     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days
