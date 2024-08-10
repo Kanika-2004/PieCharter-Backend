@@ -14,19 +14,27 @@ const cors=require('cors')
 // const serverConfig = require('./config/serverConfig.js')
 const app= express()
 
-const corsOptions = {
-    origin: serverconfig.FRONTEND_URL, // Specify your client's origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-    credentials: true, // Enable credentials
-  };
+// const corsOptions = {
+//     origin: serverconfig.FRONTEND_URL, // Specify your client's origin
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+//     credentials: true, // Enable credentials
+//   };
 
 // app.use(cors({
 //   origin: serverConfig.FRONTEND_URL, // allow to server to accept request from different origin
 //   credentials: true, // allow session cookie from browser to pass through
 // }));
   
-  app.use(cors(corsOptions));
+  // app.use(cors(corsOptions));
 
+  const corsOptions = {
+    origin: 'https://piecharters.netlify.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser())
 app.use(express.json())
