@@ -25,7 +25,7 @@ app.use(cors({
   credentials: true, // allow session cookie from browser to pass through
 }));
   
-  app.use(cors(corsOptions));
+  // app.use(cors(corsOptions));
 
 
 app.use(cookieParser())
