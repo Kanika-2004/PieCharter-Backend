@@ -11,11 +11,11 @@ const productRouter = require('./routes/productRoutes.js')
 const cartRoute = require('./routes/cartRoutes.js')
 const orderRoute = require('./routes/orderRoutes.js')
 const cors=require('cors')
-const serverConfig = require('./config/serverConfig.js')
+// const serverConfig = require('./config/serverConfig.js')
 const app= express()
 
 const corsOptions = {
-    origin: serverConfig.FRONTEND_URL, // Specify your client's origin
+    origin: serverconfig.FRONTEND_URL, // Specify your client's origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
     credentials: true, // Enable credentials
   };
