@@ -40,7 +40,7 @@ app.use(cors(corsOptions));
 
 
 app.use(session({
-  // secret: serverconfig.JWT_SECRET,
+  secret: serverconfig.JWT_SECRET,
   // resave: false, // Don't save session if unmodified
   // saveUninitialized: false, // Don't create session until something stored
   store: MongoStore.create({
