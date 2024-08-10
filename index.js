@@ -28,7 +28,7 @@ const app= express()
   // app.use(cors(corsOptions));
 
   const corsOptions = {
-    origin: 'https://piecharters.netlify.app',
+    origin: serverconfig.FRONTEND_URL,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204
