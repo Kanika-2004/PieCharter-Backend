@@ -11,6 +11,8 @@ const productRouter = require('./routes/productRoutes.js')
 const cartRoute = require('./routes/cartRoutes.js')
 const orderRoute = require('./routes/orderRoutes.js')
 const cors=require('cors')
+const session = require('express-session')
+const MongoStore= require('connect-mongo')
 // const serverConfig = require('./config/serverConfig.js')
 const app= express()
 
