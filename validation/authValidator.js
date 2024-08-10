@@ -39,7 +39,7 @@ async function isLoggedIn(req,res,next){
             })
              return res.status(200).json({
                 success: true,
-                message: "Log out successfull fuckkkkkkkk",
+                message: "Log out successfull ",
                 error: {},
                 data: {}
             });

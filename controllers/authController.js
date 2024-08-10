@@ -2,6 +2,8 @@ const serverConfig = require('../config/serverConfig');
 const login=require('../services/authService')
 
 async function logout(req,res){
+    console.log(res.cookie)
+    console.log(req.cookie)
     res.cookie("authToken","",{
         httpOnly:true,
         sameSite: "lax",
@@ -11,7 +13,7 @@ async function logout(req,res){
     })
      return res.status(200).json({
         success: true,
-        message: "Log out successfull fuckkkkk",
+        message: "Log out successfull",
         error: {},
         data: {}
     });
@@ -23,9 +25,10 @@ async function loginUser(req,res){
         const response=await login(req.body)
         res.cookie("authToken",response.token,{
             httpOnly:true,
+            sameSite:'lax',
             secure:serverConfig.COOKIE_SECURE,
-            domain:serverConfig.FRONTEND_URL,
-            maxAge:7*24*60*60*1000
+            maxAge:7*24*60*60*1000,
+            domain:serverConfig.FRONTEND_URL
         });
         return res.status(201).json({
             data:{
