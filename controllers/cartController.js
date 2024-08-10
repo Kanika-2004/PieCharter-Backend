@@ -1,7 +1,7 @@
 const {getcart,clearproductsfromcart,modifycart} = require('../services/cartService')
 async function getcarbyuser(req,res){
     try{
-        const cart=await getcart(req.user.id);
+        const cart=await getcart(req.user?.id);
         console.log(cart)
         return res.status(200).json({
             success:true,
@@ -21,7 +21,7 @@ async function getcarbyuser(req,res){
 }
 async function modifycartbyuser(req,res){
     try{
-
+      
         const cart=await modifycart(req.user.id,req.params.productid,req.params.operation=='add');
         console.log(req.user.id);
         return res.status(200).json({
@@ -31,7 +31,7 @@ async function modifycartbyuser(req,res){
             message:"modified the cart"
         })
     }catch(error){
-        console.log(req.user.id)
+        console.log(req.user?.id)
         console.log("error is here",error)
         return res.status(404).json({
             success:false,
@@ -43,8 +43,8 @@ async function modifycartbyuser(req,res){
 }
 async function clearcartbyuser(req,res){
     try{
-        const response=await clearproductsfromcart(req.user.id);
-        console.log(req.user.id)
+        const response=await clearproductsfromcart(req.user?.id);
+        console.log(req.user?.id)
         console.log(response)
         return res.status(200).json({
             success:true,

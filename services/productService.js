@@ -3,6 +3,7 @@ const fs=require('fs/promises')
 const productRepository=require('../repositories/productRepository')
 async function findproductbyid(productid){
     const response=await productRepository.findProductById(productid);
+    console.log(response)
     if(!response){
         throw{message:"no product found"}
     }
@@ -10,6 +11,7 @@ async function findproductbyid(productid){
 }
 async function findproduct(){
     const response=await productRepository.findallProduct();
+    console.log(response)
     if(!response){
         throw{message:"no product found"}
     
@@ -18,18 +20,19 @@ async function findproduct(){
 }
 async function deleteproductbyid(productid){
     const response=await productRepository.deleteProductById(productid);
+    console.log(response)
     if(!response){
         throw{message:"cannot delete the product"}
     }
     return response
 }
 async function createproduct(productdetails){
-    const imagepath=productdetails.imagePath
+    const imagepath=productdetails.productImage
     if(imagepath){
         try{
         const resp=await cloudinary.uploader.upload(imagepath)
-        var productImage=resp.secure_url
-        console.log(productImage)
+        var productImag=resp.secure_url
+        console.log(productImag)
         await fs.unlink(process.cwd() + "/" + imagepath);
         }catch(error){
             console.log(error)
@@ -37,8 +40,10 @@ async function createproduct(productdetails){
         }
     }
     const response=await productRepository.createProduct({
-        ...productdetails
+        ...productdetails,
+        productImage:productImag
     });
+    console.log("AT product serviice  ",response)
     if(!response){
         throw{message:"no product found"}
     }

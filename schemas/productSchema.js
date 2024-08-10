@@ -6,7 +6,7 @@ const productSchema= new mongoose.Schema({
     },
     productDescription:{
         type:String,
-        minlength:[10,"minimum length should be 10 characters"]
+        // minlength:[10,"minimum length should be 10 characters"]
     },
     productImage:{
         type: String

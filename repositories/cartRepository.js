@@ -1,10 +1,19 @@
-
+const mongoose= require('mongoose')
 const cart=require('../schemas/cartSchema')
-async function createcart(userid){
+const User = require('../schemas/userSchema')
+async function createcart(userId){
    try{ 
+    console.log("before creating cart")
+    console.log("the user id is",userId)
+    console.log(userId)
+    // console.log(User)
+   
+
     const newcart=await cart.create({
-        user:userid
+        user: userId
     });
+    console.log("cart created")
+    console.log("cart repo",newcart)
     return newcart
     }catch(error){
         console.log(error)
@@ -14,6 +23,7 @@ async function getcartbyuserid(userid){
     try{ const newcart=await cart.findOne({
          user:userid
      }).populate('item.product')
+     console.log("cart repo",newcart)
      return newcart
      }catch(error){
          console.log(error)

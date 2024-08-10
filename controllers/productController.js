@@ -3,15 +3,15 @@ async function createProduct(req,res){
     try{
     const response=await createproduct({
         productName:req.body.productName,
-        imagePath:req.file?.path,
-        description:req.body.productDescription,
+        productImage:req.file?.path,
+        productDescription:req.body.productDescription,
         instock:req.body.inStock,
         price:req.body.price,
         quantity:req.body.quantity,
         category:req.body.category
 
     })
-    console.log(response)
+    console.log("Product Controller results: ",response)
     return res.status(201).json({
         success:true,
         data:response,
@@ -31,6 +31,7 @@ async function createProduct(req,res){
 async function findproductbyId(req,res){
     try{
     const response= await findproductbyid(req.params.id)
+    console.log(response)
         return res.status(201).json({
             success:true,
             error:{},

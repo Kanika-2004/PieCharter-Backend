@@ -2,7 +2,7 @@ const registeruser=require('../services/userService')
 async function createuser(req,res){
     try{
         const response=await registeruser(req.body);
-        console.log(response)
+        console.log("user controller",response)
         return res.status(201).json({
             success:true,
             error:{},
@@ -10,7 +10,7 @@ async function createuser(req,res){
             message:"successfully registered the user"
         })
     }catch(error){
-        console.log(error);
+        console.log("user controller",error);
         return res.status(404).json({
             success:false,
             error:error,

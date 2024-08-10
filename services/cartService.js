@@ -4,6 +4,7 @@ const product = require("../schemas/productSchema");
 const { findProductById } = require("../repositories/productRepository");
 async function getcart(userid){
     const cart=await getcartbyuserid(userid)
+    console.log("cart service",cart)
     if(!cart){
         throw{message:"no cart found"}
     }

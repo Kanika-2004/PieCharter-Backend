@@ -1,7 +1,8 @@
 const User=require('../schemas/userSchema')
-async function find(parameter){
+async function find(parameters){
     try{
-        const response=await User.findOne({...parameter});
+        const response=await User.findOne({...parameters});
+        console.log("user repo",response)
     return response
     }
     catch(error){
@@ -11,13 +12,8 @@ async function find(parameter){
 }
 async function create(userdetails){
     try{
-        const response=await User.create({
-            email:userdetails.email,
-            firstName:userdetails.firstName,
-            lastName:userdetails.lastName,
-            mobilenumber:userdetails.mobilenumber,
-            password:userdetails.password
-        })
+        const response=await User.create(userdetails)
+        console.log("user repo",response)
         return response
     }catch(error){
         console.log(error);
