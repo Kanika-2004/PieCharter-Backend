@@ -47,11 +47,11 @@ app.use(session({
       mongoUrl: serverconfig.DB_URL, // Your MongoDB connection string
       collectionName: 'sessions' // Optional collection name (default is 'sessions')
   }),
-  cookie: {
-      maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days
-      secure: false, // Set to true if using HTTPS
-      sameSite: 'lax'
-  }
+  // cookie: {
+  //     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days
+  //     secure: false, // Set to true if using HTTPS
+  //     sameSite: 'lax'
+  // }
 }));
 
 app.use(cookieParser())
