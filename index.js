@@ -11,8 +11,6 @@ const productRouter = require('./routes/productRoutes.js')
 const cartRoute = require('./routes/cartRoutes.js')
 const orderRoute = require('./routes/orderRoutes.js')
 const cors=require('cors')
-const session = require('express-session')
-const MongoStore= require('connect-mongo')
 // const serverConfig = require('./config/serverConfig.js')
 const app= express()
 
@@ -37,22 +35,6 @@ const app= express()
 };
 
 app.use(cors(corsOptions));
-
-
-app.use(session({
-  secret: serverconfig.JWT_SECRET,
-  // resave: false, // Don't save session if unmodified
-  // saveUninitialized: false, // Don't create session until something stored
-  store: MongoStore.create({
-      mongoUrl: serverconfig.DB_URL, // Your MongoDB connection string
-      // collectionName: 'sessions' // Optional collection name (default is 'sessions')
-  }),
-  // cookie: {
-  //     maxAge: 14 * 24 * 60 * 60 * 1000, // 14 days
-  //     secure: false, // Set to true if using HTTPS
-  //     sameSite: 'lax'
-  // }
-}));
 
 app.use(cookieParser())
 app.use(express.json())
