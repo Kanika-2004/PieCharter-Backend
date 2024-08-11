@@ -4,7 +4,7 @@ const serverConfig = require('../config/serverConfig')
 async function isLoggedIn(req,res,next){
     console.log("inside isloggedin",req.cookies)
     const token=req.cookies["authToken"]
-    // console.log(token)
+    console.log(token)
     if(!token){
         return res.status(401).json({
             success:false,
