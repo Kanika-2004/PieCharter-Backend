@@ -9,7 +9,7 @@ async function isLoggedIn(req,res,next){
         return res.status(401).json({
             success:false,
             data:{},
-            message:"no token provided"        
+            message:"no token provided by user"        
         })
     }
     try{
