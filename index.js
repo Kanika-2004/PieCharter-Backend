@@ -28,7 +28,7 @@ const app= express()
   // app.use(cors(corsOptions));
 
   const corsOptions = {
-    origin: 'https://pie-charter-frontend.vercel.app',
+    origin: 'http://localhost:5173',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204

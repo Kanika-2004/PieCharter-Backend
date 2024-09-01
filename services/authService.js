@@ -18,12 +18,7 @@ async function login(userdetails){
     const token=jwt.sign({email:user.email,id:user._id},JWT_SECRET,{
         expiresIn:JWT_EXPIRY
     })
-    console.log(token)
-    return {token,
-        userData:{
-            email:user.email,
-            firstName:user.firstName,
-        }
-    };
+    console.log("The token is",token)
+    return token
 }
 module.exports=login

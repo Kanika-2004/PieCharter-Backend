@@ -2,9 +2,10 @@ const jwt=require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/serverConfig')
 const serverConfig = require('../config/serverConfig')
 async function isLoggedIn(req,res,next){
-    console.log("inside isloggedin",req.cookies)
+    console.log("inside isloggedin the cookies are",req.cookies)
+    // console.log(req.cookies)
     const token=req.cookies["authToken"]
-    console.log(token)
+    console.log("The token is",token)
     if(!token){
         return res.status(401).json({
             success:false,
@@ -32,10 +33,9 @@ async function isLoggedIn(req,res,next){
         if(error.name === "TokenExpiredError") {
             res.cookie("authToken","",{
                 httpOnly:true,
-                sameSite: "lax",
-                secure:serverConfig.COOKIE_SECURE,
-                maxAge: 7 * 24 * 60 * 60 * 1000,
-                                               domain:serverConfig.FRONTEND_URL
+                secure:false,
+                // maxAge: 7 * 30* 24 * 60 * 60 * 1000,
+                                
             })
              return res.status(200).json({
                 success: true,
