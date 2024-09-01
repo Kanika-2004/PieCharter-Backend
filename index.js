@@ -2,7 +2,7 @@ const express=require('express')
 const { PORT } = require('./config/serverConfig.js')
 const connectDb = require('./config/dbConfig.js')
 const userRouter=require('./routes/userRoutes.js')
-const serverconfig = require('./config/serverConfig.js')
+
 const cookieParser=require('cookie-parser')
 // const isLoggedIN=require('./validation/authvalidator.js')
 const authrouter = require('./routes/authRoutes.js')
@@ -11,14 +11,15 @@ const productRouter = require('./routes/productRoutes.js')
 const cartRoute = require('./routes/cartRoutes.js')
 const orderRoute = require('./routes/orderRoutes.js')
 const cors=require('cors')
-// const serverConfig = require('./config/serverConfig.js')
+const serverconfig= require('./config/serverConfig.js')
+
 const app= express()
 
-app.use(cors({
-  origin: 'https://pie-charter-frontend.vercel.app',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true // This is important if you're dealing with cookies or sessions
-}));
+// app.use(cors({
+//   origin: serverconfig.FRONTEND_URL,
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true // This is important if you're dealing with cookies or sessions
+// }));
 
 // app.use(cors({
 //   origin: serverConfig.FRONTEND_URL, // allow to server to accept request from different origin
@@ -26,15 +27,15 @@ app.use(cors({
 // }));
   
   // app.use(cors(corsOptions));
+// 'http://localhost:5173'
+  const corsOptions = {
+    origin: serverconfig.FRONTEND_URL,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    // optionsSuccessStatus: 204
+};
 
-//   const corsOptions = {
-//     origin: 'http://localhost:5173',
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true,
-//     optionsSuccessStatus: 204
-// };
-
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(cookieParser())
 app.use(express.json())
