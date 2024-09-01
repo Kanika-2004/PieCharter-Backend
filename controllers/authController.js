@@ -24,10 +24,10 @@ async function loginUser(req,res){
     try{
         const response=await login(req.body)
         res.cookie("authToken",response,{
-            httpOnly:true,
+            httpOnly:false,
             sameSite:'lax',
             secure:serverConfig.COOKIE_SECURE,
-            // maxAge:7*24*60*60*1000,
+            maxAge:7*24*60*60*1000,
             // domain:serverConfig.FRONTEND_URL
         });
         return res.status(201).json({
