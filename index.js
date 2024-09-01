@@ -14,18 +14,18 @@ const cors=require('cors')
 // const serverConfig = require('./config/serverConfig.js')
 const app= express()
 
-const corsOptions = {
-    origin: serverconfig.FRONTEND_URL, // Specify your client's origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-    credentials: true, // Enable credentials
-  };
+app.use(cors({
+  origin: 'https://pie-charter-frontend.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true // This is important if you're dealing with cookies or sessions
+}));
 
 // app.use(cors({
 //   origin: serverConfig.FRONTEND_URL, // allow to server to accept request from different origin
 //   credentials: true, // allow session cookie from browser to pass through
 // }));
   
-  app.use(cors(corsOptions));
+  // app.use(cors(corsOptions));
 
 //   const corsOptions = {
 //     origin: 'http://localhost:5173',
